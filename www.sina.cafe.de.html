@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sina Cafe - Authentic Ethiopian Cuisine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f5f0;
+        }
+
+        .translate-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f4e4a6, #e6d478);
+            color: #2c1810;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .header-images img {
+            width: 900px;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2rem;
+            background: rgba(0,0,0,0.1);
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #8B4513;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #8B4513;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #A0522D;
+        }
+
+        .menu-pdf-link {
+            color: #8B4513;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+
+        .menu-pdf-link:hover {
+            color: #A0522D;
+            border-color: #A0522D;
+            background-color: rgba(160, 82, 45, 0.1);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #8B4513;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            color: #FFD700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #FFD700;
+            color: #333;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background: #FFA500;
+            transform: translateY(-2px);
+        }
+
+        .visit-restaurant-link {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #FFD700;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .visit-restaurant-link:hover {
+            background: #FFD700;
+            color: #333;
+        }
+
+        .advertising-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+.rotating-banner {
+    position: relative;
+    height: 600px;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+}
+
+.banner-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.banner-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+        .advertising-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ad-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .ad-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .ad-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .ad-content {
+            padding: 1.5rem;
+        }
+
+        .ad-content h3 {
+            font-size: 1.3rem;
+            color: #8B4513;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-content p {
+            color: #000000;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            text-transform: capitalize;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .customer-comments {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .customer-comments h1 {
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .customer-comments p {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .customer-comments form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .customer-comments label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .customer-comments input, .customer-comments textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .customer-comments button {
+            background: #8B4513;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .customer-comments button:hover {
+            background: #A0522D;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .advertising-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-images {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-images img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Optional smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" class="translate-container"></div>
+
+    <header class="header">
+        <div class="header-images">
+            <!-- Left header image -->
+            <img src="../static/img/cof_1.png" alt="Sina Cafe" class="side-image">
+
+            <!-- Main center image (51.png) -->
+            <img src="../static/img/logo.png" alt="" class="main-image">
+
+            <!-- Right header image -->
+            <img src="../static/img/1_18.png" alt="Sina Cafe" class="side-image">
+        </div>
+        <nav class="navbar">
+            <div class="logo">Sina Cafe</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="../static/pdf/menu-gallery.pdf" target="_blank" class="menu-pdf-link"> Menu Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reservation">Reservations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Sina Cafe</h1>
+            <p>Schloßstraße 125, 60486 Frankfurt am Main</p>
+            <a href="#advertising" class="btn">Explore Our Delicious Menu</a>
+            <br>
+            <a href="https://www.sebeta-restaurant.de/" target="https://www.sebeta-restaurant.de/" class="visit-restaurant-link">Visit Our Restaurant</a>
+        </div>
+    </section>
+
+<!-- Advertising Section with All Images -->
+<section id="advertising" class="advertising-section">
+    <div class="section-title">
+        <h2>Sina Café Inauguration Ceremonies and Our Café View</h2>
+    </div>
+
+    <!-- Rotating Banner -->
+    <div class="rotating-banner">
+        <div class="banner-slide active">
+            <img src="../static/img/14.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/23.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/7.png" alt="Ethiopian Tibs Dish - View 3">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/12.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/13.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/24.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/25.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/27.png" alt="">
+        </div>
+        <div class="banner-slide">
+            <img src="../static/img/29.png" alt="">
+        </div>
+<div class="banner-slide">
+    <video autoplay muted loop playsinline>
+        <source src="../static/img/v2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        <video autoplay muted loop playsinline>
+        <source src="../static/img/v3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+</div>
+
+
+
+    </div>
+</section>
+
+       <div class="section-title">
+            <h2>Sina Delicious Ethiopian Specialties</h2>
+            <p>Discover the authentic taste of Ethiopia with our traditional dishes</p>
+        </div>
+        <div class="advertising-grid">
+            <div class="ad-item">
+                <img src="../static/img/1_22.png" alt="Orange - Ingwer">
+                <div class="ad-content">
+                    <p>Orange - Ingwer</p>
+                    <div class="price">€4,50</div>
+                </div>
+            </div>
+            <div class="ad-item">
+                <img src="../static/img/1_23.png" alt=" Gewürze - Minze -Limette">
+                <div class="ad-content">
+                    <p>Gewürze - Minze - Limette</p>
+                    <div class="price">€3,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_19.png" alt="Himbeere - Limette - Minze">
+                <div class="ad-content">
+                    <p>Himbeere - Limette - Minze</p>
+                    <div class="price">€4,50</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_14.png" alt="Salat mit Rindfleischstreifen">
+                <div class="ad-content">
+                    <p>Salat mit Rindfleischstreifen</p>
+                    <div class="price">€9,90</div>
+                     <p>Mit Hähnchen</p>
+                    <div class="price">€8,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_15.png" alt="Gemischter Teller Mit Fleisch und Reis">
+                <div class="ad-content">
+                    <p>Gemischter Teller Mit Fleisch und Reis </p>
+                    <div class="price">€11,90</div>
+                    <p>Gemischer Teller vegetarisch mit Reis </p>
+                    <div class="price">€9,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_16.png" alt="Pommes mit Rindfleischsauce">
+                <div class="ad-content">
+                    <p>Pommes mit Rindfleischsauce</p>
+                    <div class="price">€8,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_17.png" alt=" Sambussa Rinderhack">
+                <div class="ad-content">
+                    <p>Sambussa Rinderhack</p>
+                    <div class="price">€5,90</div>
+                    <p>Linsen</p>
+                    <div class="price">€4,90</div>
+                    <p>Reis</p>
+                    <div class="price">€4,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_18.png" alt="Burrito mit Rinderhack">
+                <div class="ad-content">
+                    <p>Burrito mit Rinderhack</p>
+                    <div class="price">€9,90</div>
+                    <p>mit  Gemüse</p>
+                    <div class="price">€8,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_30.png" alt="Erdbeerkuchen">
+                <div class="ad-content">
+                    <p>Erdbeerkuchen</p>
+                    <div class="price">€3,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_28.png" alt="Bienenstich Mit Pudding">
+                <div class="ad-content">
+                    <p>Bienenstich Mit Pudding</p>
+                    <div class="price">€3,90</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_27.png" alt="Kakao Mit Sahne">
+                <div class="ad-content">
+                    <p>Kakao Mit Sahne</p>
+                    <div class="price">€3,90</div>
+                    <p>Àthiopischer Schwarztee Mit Gewürzen</p>
+                    <div class="price">€3,50</div>
+                    <p>Àthiopischer Tee-Latte Mit Gewürzen</p>
+                    <div class="price">€3,90</div>
+                    <p>Spezial-Tee Minze-Limette-Ingwer Mit Gewürzen</p>
+                    <div class="price">€4,50</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_26.png" alt="Habesha_Gomen 16 €">
+                <div class="ad-content">
+                    <p>GRÜNER TEE </p>
+                       <p> SCHWARZER TEE </p>
+                       <p> KAMILLEN TEE</p>
+                    <div class="price">€2,50</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_25.png" alt="Salami und Käse Sandwich">
+                <div class="ad-content">
+                    <p>Salami und Käse Sandwich</p>
+                    <div class="price">€3,90</div>
+                    <p>Thunfisch Sandwich</p>
+                    <div class="price">€4,50</div>
+                    <p>Gemüse Sandwich</p>
+                    <div class="price">€4,50</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/Zucchini Bread_8_euro.png" alt="Zucchini Bread">
+                <div class="ad-content">
+                    <p>Zucchini Bread</p>
+                    <div class="price">€8,00</div>
+                </div>
+            </div>
+
+            <div class="ad-item">
+                <img src="../static/img/1_24.png" alt="Falafel - Teller">
+                <div class="ad-content">
+                    <p>Falafel - Teller</p>
+                    <div class="price">€8,90</div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="advertising-section">
+        <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.2rem; line-height: 1.8; color: #333; margin-bottom: 2rem;">
+                Ready to experience the authentic flavors of Ethiopia? Reserve your table at Sina Cafe and let us take you on a culinary journey you'll never forget.
+            </p>
+
+            <div style="margin-bottom: 1.5rem;">
+                <p style="font-size: 1.1rem; color: #8B4513; font-weight: bold;">📍 Schloßstraße 125, 60486 Frankfurt am Main</p>
+            </div>
+
+            <a href="https://maps.app.goo.gl/qyu8Bu3XB3URmBj3A" target="_blank" class="btn" style="font-size: 1.2rem; padding: 15px 40px;">Reserve Your Table Now</a>
+
+            <p style="font-size: 0.9rem; color: #666; margin-top: 1.5rem;">
+                For special events or large groups, please call us directly
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="advertising-section">
+        <div class="section-title">
+            <h2>About Sina Cafe</h2>
+            <p>Your gateway to authentic Ethiopian flavors in the heart of Frankfurt</p>
+        </div>
+
+        <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center; margin-bottom: 1.5rem;">
+                Welcome to Sina Cafe, where tradition meets taste in Frankfurt's vibrant culinary scene. Located on Schloßstraße 125, we bring you the rich, authentic flavors of Ethiopian cuisine prepared with love and traditional recipes passed down through generations.
+            </p>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center; margin-bottom: 1.5rem;">
+                Our skilled chefs use only the finest spices and ingredients to create dishes that transport you straight to the heart of Ethiopia. From our signature Chechebsa to our flavorful vegetarian options, every meal is a celebration of Ethiopian culture and hospitality.
+            </p>
+
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center;">
+                Experience the warmth of Ethiopian dining traditions in our cozy restaurant, where every guest is treated like family. Join us for an unforgettable culinary journey that awakens your senses and nourishes your soul.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="advertising-section">
+        <div class="section-title">
+            <h2>Contact & Opening Hours</h2>
+            <p>Visit us or get in touch - we're here to serve you authentic Ethiopian cuisine</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+            <!-- Contact Details -->
+            <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <h3 style="color: #8B4513; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Contact Details</h3>
+
+                <div style="text-align: center; line-height: 2;">
+                    <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                        <strong style="color: #8B4513;">📍 Address:</strong><br>
+                        Schloßstraße 125<br>
+                        60486 Frankfurt am Main<br>
+                        Deutschland
+                    </p>
+
+                    <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                        <strong style="color: #8B4513;">📞 Phone:</strong><br>
+                       06941070915
+                    </p>
+
+                    <p style="font-size: 1.1rem; color: #333; margin-bottom: 1rem;">
+                        <strong style="color: #8B4513;">✉️ Email:</strong><br>
+                        info@sinacafe-frankfurt.de
+                    </p>
+                </div>
+            </div>
+
+            <!-- Opening Hours -->
+            <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <h3 style="color: #8B4513; font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Opening Hours</h3>
+
+                <div style="line-height: 2.2;">
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <span style="font-weight: bold; color: #8B4513;">Monday</span>
+                        <span style="color: #333;">11:00 - 22:00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <span style="font-weight: bold; color: #8B4513;">Tuesday</span>
+                        <span style="color: #333;">11:00 - 22:00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <span style="font-weight: bold; color: #8B4513;">Wednesday</span>
+                        <span style="color: #333;">11:00 - 22:00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <span style="font-weight: bold; color: #8B4513;">Thursday</span>
+                        <span style="color: #333;">11:00 - 22:00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <span style="font-weight: bold; color: #8B4513;">Friday</span>
+                        <span style="color: #333;">11:00 - 23:00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <span style="font-weight: bold; color: #8B4513;">Saturday</span>
+                        <span style="color: #333;">12:00 - 23:00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                        <span style="font-weight: bold; color: #8B4513;">Sunday</span>
+                        <span style="color: #333;">12:00 - 22:00</span>
+                    </div>
+                </div>
+
+                <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #666; font-style: italic;">
+                    *Kitchen closes 30 minutes before closing time
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">If you'd like to connect with us, feel free to visit our Social Media:</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="https://www.instagram.com/" target="_blank" class="btn">
+                    Instagram Profile
+                </a>
+                <a href="https://www.tiktok.com/explore" target="_blank" class="btn"> Tik Tock </a>
+                <a href="https://maps.app.goo.gl/qyu8Bu3XB3URmBj3A" target="_blank" class="btn">
+                    View us on Google Maps
+                </a>
+                    <script>
+        const images = document.querySelectorAll('.food-slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
+    </script>
+
+   </section>
+    <script>
+        const images = document.querySelectorAll('.food-slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
+    </script>
+
+<!-- Google Translate Element -->
+<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en', // Default page language
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+    <section id="customer-comments" class="customer-comments">
+    <h1>Customer Comments</h1>
+    <p>We value your feedback! Leave a comment and see what others have shared.</p>
+
+    <!-- Form to submit comments -->
+    <form method="POST" action="{{ url_for('comments') }}">
+        <label for="name">Your Name (Optional):</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        <br>
+        <label for="comment">Your Comment:</label>
+        <textarea id="comment" name="comment" placeholder="Write your comment here..." required></textarea>
+        <br>
+        <button type="submit">Submit Comment</button>
+    </form>
+    </section>
+
+<script>
+    // Handle customer comments
+    const commentForm = document.getElementById('submit-comment');
+    const commentList = document.getElementById('comments-display');
+
+    commentForm.addEventListener('click', function () {
+        const nameInput = document.getElementById('customer-name');
+        const commentInput = document.getElementById('customer-comment');
+
+        // Validate inputs
+        const name = nameInput.value.trim();
+        const comment = commentInput.value.trim();
+        if (!name || !comment) {
+            alert('Please fill out both fields.');
+            return;
+        }
+
+        // Create a new comment item
+        const newComment = document.createElement('li');
+        newComment.innerHTML = `<h4>${name}</h4><p>${comment}</p>`;
+
+        // Add the comment to the list
+        commentList.appendChild(newComment);
+
+        // Clear the input fields
+        nameInput.value = '';
+        commentInput.value = '';
+    });
+</script>
+
+<!-- Add a new audio element -->
+<audio id="notification-sound" src="{{ url_for('static', filename='sounds/notification.mp3') }}" preload="auto"></audio>
+
+<script>
+    // Check if the reservation flash message is displayed and play sound
+    document.addEventListener('DOMContentLoaded', function () {
+        // Check if the flash message is 'success'
+        const flashMessage = document.querySelector('.flash.success');
+        if (flashMessage) {
+            const notificationSound = document.getElementById('notification-sound');
+            notificationSound.play();  // Play sound
+        }
+    });
+</script>
+
+<!-- Add this footer or section in your index.html -->
+<footer style="text-align: center; margin-top: 20px;">
+    <p>Created by  Asmamaw Yehun (Ph.D and Certified Software Engineer</p>
+    <p>email: chanieasmamaw@yahoo.com, +4917625315666</p>
+    <a href="https://www.linkedin.com/in/asmamaw-chanie-yehun/" target="_blank">https://www.linkedin.com/in/asmamaw-chanie-yehun</a>
+</footer>
+<footer style="text-align: center; margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-top: 1px solid #ddd;">
+    <p>&copy; <span id="currentYear"></span> Sina Cafe . All rights reserved.</p>
+   </footer>
+
+<script>
+    // Dynamically set the current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+// Rotating Banner JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const bannerSlides = document.querySelectorAll('.banner-slide');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        // Remove active class from current slide
+        bannerSlides[currentSlide].classList.remove('active');
+
+        // Move to next slide (loop back to 0 if at the end)
+        currentSlide = (currentSlide + 1) % bannerSlides.length;
+
+        // Add active class to new current slide
+        bannerSlides[currentSlide].classList.add('active');
+    }
+
+    // Change slide every 1 second (1000 milliseconds)
+    setInterval(showNextSlide, 1000);
+});
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.banner-slide');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        // Hide current slide
+        slides[currentSlide].classList.remove('active');
+
+        // Move to next
+        currentSlide = (currentSlide + 1) % slides.length;
+        const nextSlide = slides[currentSlide];
+        nextSlide.classList.add('active');
+
+        // Check if next slide is a video
+        const video = nextSlide.querySelector('video');
+
+        if (video) {
+            video.currentTime = 0; // Restart video
+            video.play();
+
+            // Wait for the video to finish before moving to next slide
+            video.onended = () => {
+                showNextSlide();
+            };
+        } else {
+            // If image, wait 4 seconds
+            setTimeout(showNextSlide, 4000);
+        }
+    }
+
+    // Start first slide
+    slides[currentSlide].classList.add('active');
+
+    // Delay based on content
+    const firstVideo = slides[currentSlide].querySelector('video');
+    if (firstVideo) {
+        firstVideo.play();
+        firstVideo.onended = () => showNextSlide();
+    } else {
+        setTimeout(showNextSlide, 4000);
+    }
+});
+</script>
+
+
+</body>
+</html>Fved
