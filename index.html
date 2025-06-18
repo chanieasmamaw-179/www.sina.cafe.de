@@ -860,27 +860,6 @@
     // Dynamically set the current year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 </script>
-
-// Rotating Banner JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    const bannerSlides = document.querySelectorAll('.banner-slide');
-    let currentSlide = 0;
-
-    function showNextSlide() {
-        // Remove active class from current slide
-        bannerSlides[currentSlide].classList.remove('active');
-
-        // Move to next slide (loop back to 0 if at the end)
-        currentSlide = (currentSlide + 1) % bannerSlides.length;
-
-        // Add active class to new current slide
-        bannerSlides[currentSlide].classList.add('active');
-    }
-
-    // Change slide every 1 second (1000 milliseconds)
-    setInterval(showNextSlide, 1000);
-});
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.banner-slide');
@@ -928,4 +907,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 </body>
-</html>Fved
+</html>
