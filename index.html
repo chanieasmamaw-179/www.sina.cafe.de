@@ -644,17 +644,17 @@
         </div>
 
         <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto;">
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center; margin-bottom: 1.5rem;">
-                Welcome to Sina Cafe, where tradition meets taste in Frankfurt's vibrant culinary scene. Located on Schloßstraße 125, we bring you the rich, authentic flavors of Ethiopian cuisine prepared with love and traditional recipes passed down through generations.
-            </p>
+          <style>
+p {
+    line-height: 1.5;
+}
+</style>
 
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center; margin-bottom: 1.5rem;">
-                Our skilled chefs use only the finest spices and ingredients to create dishes that transport you straight to the heart of Ethiopia. From our signature Chechebsa to our flavorful vegetarian options, every meal is a celebration of Ethiopian culture and hospitality.
-            </p>
+<p><strong>Welcome to Sina Cafe, where tradition meets taste in Frankfurt's vibrant culinary scene.</strong> Located on Schloßstraße 125, we bring you the rich, authentic flavors of Ethiopian cuisine prepared with love and traditional recipes passed down through generations.</p>
 
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #333; text-align: center;">
-                Experience the warmth of Ethiopian dining traditions in our cozy restaurant, where every guest is treated like family. Join us for an unforgettable culinary journey that awakens your senses and nourishes your soul.
-            </p>
+<p>Our skilled chefs use only the finest spices and ingredients to create dishes that transport you straight to the heart of Ethiopia. From our signature Chechebsa to our flavorful vegetarian options, every meal is a celebration of Ethiopian culture and hospitality.</p>
+
+<p>In addition to our cafe services, we have a delicious restaurant located at Werftstraße 15, 60327 Frankfurt am Main. Experience the warmth of Ethiopian dining traditions in our cozy restaurant, where every guest is treated like family. Join us for an unforgettable culinary journey that awakens your senses and nourishes your soul.</p>
         </div>
     </section>
 
@@ -731,30 +731,7 @@
             </div>
         </div>
 
-        <div style="text-align: center; margin-top: 3rem;">
-            <p style="font-size: 1.1rem; margin-bottom: 1rem;">If you'd like to connect with us, feel free to visit our Social Media:</p>
-            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <a href="https://www.instagram.com/" target="_blank" class="btn">
-                    Instagram Profile
-                </a>
-                <a href="https://www.tiktok.com/explore" target="_blank" class="btn"> Tik Tock </a>
-                <a href="https://maps.app.goo.gl/qyu8Bu3XB3URmBj3A" target="_blank" class="btn">
-                    View us on Google Maps
-                </a>
-                    <script>
-        const images = document.querySelectorAll('.food-slideshow img');
-        let currentIndex = 0;
 
-        function showNextImage() {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
-        }
-
-        setInterval(showNextImage, 3000); // Change image every 3 seconds
-    </script>
-
-   </section>
     <script>
         const images = document.querySelectorAll('.food-slideshow img');
         let currentIndex = 0;
@@ -785,21 +762,114 @@
 
 
 
-    <section id="customer-comments" class="customer-comments">
-    <h1>Customer Comments</h1>
-    <p>We value your feedback! Leave a comment and see what others have shared.</p>
+   <section id="social-media" class="social-media">
+    <h1>Follow Us</h1>
+    <p>Stay connected with Sina Cafe! Follow us on social media for updates, special offers, and more delicious content.</p>
 
-    <!-- Form to submit comments -->
-    <form method="POST" action="{{ url_for('comments') }}">
-        <label for="name">Your Name (Optional):</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name">
-        <br>
-        <label for="comment">Your Comment:</label>
-        <textarea id="comment" name="comment" placeholder="Write your comment here..." required></textarea>
-        <br>
-        <button type="submit">Submit Comment</button>
-    </form>
-    </section>
+    <div class="social-links">
+        <a href="https://www.facebook.com/" target="_blank" class="social-link facebook">
+            <span class="icon">📘</span>
+            <span>Like us on Facebook</span>
+        </a>
+
+        <a href="https://www.instagram.com/" target="_blank" class="social-link instagram">
+            <span class="icon">📷</span>
+            <span>Follow us on Instagram</span>
+        </a>
+
+        <a href="https://www.twitter.com/" target="_blank" class="social-link twitter">
+            <span class="icon">🐦</span>
+            <span>Follow us on Twitter</span>
+        </a>
+
+        <a href="https://www.tiktok.com/" target="_blank" class="social-link tiktok">
+            <span class="icon">🎵</span>
+            <span>Follow us on TikTok</span>
+        </a>
+    </div>
+</section>
+
+<style>
+.social-media {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.social-media h1 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.social-media p {
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 180px;
+    justify-content: center;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.social-link.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+.social-link.instagram {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    color: white;
+}
+
+.social-link.twitter {
+    background-color: #1da1f2;
+    color: white;
+}
+
+.social-link.tiktok {
+    background-color: #000;
+    color: white;
+}
+
+.social-link .icon {
+    font-size: 20px;
+}
+
+.social-link span:last-child {
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-link {
+        width: 250px;
+    }
+}
+</style>
 
 <script>
     // Handle customer comments
