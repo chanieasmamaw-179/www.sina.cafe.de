@@ -4,377 +4,396 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sina Cafe - Authentic Ethiopian Cuisine</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f5f0;
-        }
+    html {
+        scroll-behavior: smooth;
+    }
 
-        .translate-container {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-        }
+    body {
+        font-family: 'Georgia', serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f5f0;
+    }
 
-        .header {
-            background: linear-gradient(135deg, #f4e4a6, #e6d478);
-            color: #2c1810;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    .translate-container {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+    }
 
-        .header-images {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            gap: 1rem;
-        }
+    .header {
+        background: linear-gradient(135deg, #f4e4a6, #e6d478);
+        color: #2c1810;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
 
-        .header-images img {
-            width: 900px;
-            height: 300px;
-            border-radius: 10px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
+    .header-images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 
+    .header-images img {
+        width: 100%;
+        max-width: 900px;
+        height: auto;
+        aspect-ratio: 3 / 1;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 2rem;
+        background: rgba(0,0,0,0.1);
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #8B4513;
+        text-align: center;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        color: #8B4513;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-links a:hover {
+        color: #A0522D;
+    }
+
+    .menu-pdf-link {
+        color: #8B4513;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
+        border: 2px solid transparent;
+        border-radius: 5px;
+    }
+
+    .menu-pdf-link:hover {
+        color: #A0522D;
+        border-color: #A0522D;
+        background-color: rgba(160, 82, 45, 0.1);
+    }
+
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=600&fit=crop');
+        background-size: cover;
+        background-position: center;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #8B4513;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        color: #FFD700;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: #FFD700;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #FFD700;
+        color: #333;
+        padding: 12px 30px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s;
+        margin: 10px;
+    }
+
+    .btn:hover {
+        background: #FFA500;
+        transform: translateY(-2px);
+    }
+
+    .visit-restaurant-link {
+        color: #FFD700;
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid #FFD700;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: all 0.3s;
+    }
+
+    .visit-restaurant-link:hover {
+        background: #FFD700;
+        color: #333;
+    }
+
+    .advertising-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+        font-size: 2.5rem;
+        color: #8B4513;
+        margin-bottom: 1rem;
+    }
+
+    .section-title p {
+        font-size: 1.1rem;
+        color: #666;
+    }
+
+    .rotating-banner {
+        position: relative;
+        height: 50vh;
+        min-height: 300px;
+        margin-bottom: 3rem;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .banner-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 0;
+    }
+
+    .banner-slide video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .banner-slide.active {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .banner-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .advertising-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .ad-item {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .ad-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .ad-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .ad-content {
+        padding: 1.5rem;
+    }
+
+    .ad-content h3 {
+        font-size: 1.3rem;
+        color: #8B4513;
+        margin-bottom: 0.5rem;
+    }
+
+    .ad-content p {
+        color: #000000;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        text-transform: capitalize;
+    }
+
+    .price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .customer-comments {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .customer-comments h1 {
+        color: #8B4513;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .customer-comments p {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #666;
+    }
+
+    .customer-comments form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .customer-comments label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #8B4513;
+        font-weight: bold;
+    }
+
+    .customer-comments input,
+    .customer-comments textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-family: inherit;
+    }
+
+    .customer-comments button {
+        background: #8B4513;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .customer-comments button:hover {
+        background: #A0522D;
+    }
+
+    @media (max-width: 768px) {
         .navbar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 2rem;
-            background: rgba(0,0,0,0.1);
             flex-direction: column;
             gap: 1rem;
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #8B4513;
-            text-align: center;
-        }
-
         .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            justify-content: center;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
         }
 
         .nav-links a {
-            color: #8B4513;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.3rem;
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-links a:hover {
-            color: #A0522D;
-        }
-
-        .menu-pdf-link {
-            color: #8B4513;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.3rem;
-            padding: 0.5rem 1rem;
-            border: 2px solid transparent;
-            border-radius: 5px;
-        }
-
-        .menu-pdf-link:hover {
-            color: #A0522D;
-            border-color: #A0522D;
-            background-color: rgba(160, 82, 45, 0.1);
+            font-size: 1.1rem;
         }
 
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=600&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #8B4513;
+            height: 50vh;
+            padding: 1rem;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            color: #FFD700;
+            font-size: 2rem;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #FFD700;
+            font-size: 1rem;
         }
-
-        .btn {
-            display: inline-block;
-            background: #FFD700;
-            color: #333;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s;
-            margin: 10px;
-        }
-
-        .btn:hover {
-            background: #FFA500;
-            transform: translateY(-2px);
-        }
-
-        .visit-restaurant-link {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: bold;
-            border: 2px solid #FFD700;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s;
-        }
-
-        .visit-restaurant-link:hover {
-            background: #FFD700;
-            color: #333;
-        }
-
-        .advertising-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: #666;
-        }
-.rotating-banner {
-    position: relative;
-    height: 600px;
-    margin-bottom: 3rem;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.banner-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    z-index: 0;
-}
-
-.banner-slide video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-
-.banner-slide.active {
-    opacity: 1;
-    z-index: 1;
-}
-
-.banner-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
 
         .advertising-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr;
         }
 
-        .ad-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        .header-images {
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .ad-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        .header-images img {
+            max-width: 100%;
+            aspect-ratio: 1 / 1;
         }
 
-        .ad-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .ad-content {
-            padding: 1.5rem;
-        }
-
-        .ad-content h3 {
-            font-size: 1.3rem;
-            color: #8B4513;
-            margin-bottom: 0.5rem;
-        }
-
-        .ad-content p {
-            color: #000000;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            text-transform: capitalize;
-        }
-
-        .price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #000000;
+        .btn,
+        .visit-restaurant-link {
+            font-size: 1rem;
+            padding: 10px 20px;
         }
 
         .customer-comments {
-            padding: 4rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            padding: 2rem 1rem;
         }
+    }
+</style>
 
-        .customer-comments h1 {
-            color: #8B4513;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .customer-comments p {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-
-        .customer-comments form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .customer-comments label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #8B4513;
-            font-weight: bold;
-        }
-
-        .customer-comments input, .customer-comments textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-
-        .customer-comments button {
-            background: #8B4513;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .customer-comments button:hover {
-            background: #A0522D;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .nav-links a {
-                font-size: 1.1rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .advertising-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header-images {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .header-images img {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Optional smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
 </head>
 <body>
 
