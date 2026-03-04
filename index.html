@@ -37,11 +37,11 @@ body {
     overflow-x: hidden;
 }
 
-/* SVG and Image Responsiveness */
-svg, img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
+img, svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /*-----------------------------------------------Mobile View----------------------------------------------------------*/
@@ -274,7 +274,8 @@ svg, img {
         grid-template-columns: 1fr;
         gap: 1rem;
         margin-top: 1rem;
-        width: 100%;
+        width: 110%;
+        height: 100%;
     }
 
     .customer-comments {
@@ -698,7 +699,6 @@ svg, img {
 
 .ad-item img {
     width: 100%;
-    height: 200px;
     object-fit: cover;
 }
 
@@ -952,7 +952,7 @@ body, html {
                 <div class="logo"></div>
                 <ul class="nav-links">
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="../static/pdf/menu-gallery.pdf" target="_blank" class="menu-pdf-link">Menu Gallery</a></li>
+                    <li><a href="../static/pdf/menu-gallery.pdf/" target="_blank" class="menu-pdf-link">Menu Gallery</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1065,158 +1065,70 @@ body, html {
         </div>
     </div>
 </section> <!-- Close the section -->
+<section class="advertising-section">
+    <div class="section-title">
+        <h2>Sina Delicious Ethiopian Specialties</h2>
+        <p>Discover the authentic taste of Ethiopia with our traditional dishes</p>
+    </div>
 
+    <div class="advertising-grid">
 
-       <div class="section-title">
-            <h2>Sina Delicious Ethiopian Specialties</h2>
-            <p>Discover the authentic taste of Ethiopia with our traditional dishes</p>
+        <div class="ad-item">
+            <img src="../static/img/4_1.jpeg" alt="Orange - Ingwer">
         </div>
-        <div class="advertising-grid">
-            <div class="ad-item">
-                <img src="../static/img/1_22.png" alt="Orange - Ingwer">
-                <div class="ad-content">
-                    <p>Orange - Ingwer</p>
-                    <div class="price">€4,50</div>
-                </div>
-            </div>
-            <div class="ad-item">
-                <img src="../static/img/1_23.png" alt=" Gewürze - Minze -Limette">
-                <div class="ad-content">
-                    <p>Gewürze - Minze - Limette</p>
-                    <div class="price">€3,90</div>
-                </div>
-            </div>
 
-            <div class="ad-item">
-                <img src="../static/img/1_19.png" alt="Himbeere - Limette - Minze">
-                <div class="ad-content">
-                    <p>Himbeere - Limette - Minze</p>
-                    <div class="price">€4,50</div>
-                </div>
-            </div>
-
-
-            <div class="ad-item">
-                <img src="../static/img/1_27.png" alt="Kakao Mit Sahne">
-                <div class="ad-content">
-                    <p>Kakao Mit Sahne</p>
-                    <div class="price">€3,90</div>
-                    <p>Àthiopischer Schwarztee Mit Gewürzen</p>
-                    <div class="price">€3,50</div>
-                    <p>Àthiopischer Tee-Latte Mit Gewürzen</p>
-                    <div class="price">€3,90</div>
-                    <p>Spezial-Tee Minze-Limette-Ingwer Mit Gewürzen</p>
-                    <div class="price">€4,50</div>
-                </div>
-            </div>
-            <div class="ad-item">
-                <img src="../static/img/1_14.png" alt="Salat mit Rindfleischstreifen">
-                <div class="ad-content">
-                    <p>Salat mit Rindfleischstreifen</p>
-                    <div class="price">€9,90</div>
-                     <p>Mit Hähnchen</p>
-                    <div class="price">€8,90</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_15.png" alt="Gemischter Teller Mit Fleisch und Reis">
-                <div class="ad-content">
-                    <p>Gemischter Teller Mit Fleisch und Reis </p>
-                    <div class="price">€11,90</div>
-                    <p>Gemischer Teller vegetarisch mit Reis </p>
-                    <div class="price">€9,90</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_16.png" alt="Pommes mit Rindfleischsauce">
-                <div class="ad-content">
-                    <p>Pommes mit Rindfleischsauce</p>
-                    <div class="price">€8,90</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_17.png" alt=" Sambussa Rinderhack">
-                <div class="ad-content">
-                    <p>Sambussa Rinderhack</p>
-                    <div class="price">€5,90</div>
-                    <p>Linsen</p>
-                    <div class="price">€4,90</div>
-                    <p>Reis</p>
-                    <div class="price">€4,90</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_18.png" alt="Burrito mit Rinderhack">
-                <div class="ad-content">
-                    <p>Burrito mit Rinderhack</p>
-                    <div class="price">€9,90</div>
-                    <p>mit  Gemüse</p>
-                    <div class="price">€8,90</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_30.png" alt="Erdbeerkuchen">
-                <div class="ad-content">
-                    <p>Erdbeerkuchen</p>
-                    <div class="price">€3,90</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_28.png" alt="Bienenstich Mit Pudding">
-                <div class="ad-content">
-                    <p>Bienenstich Mit Pudding</p>
-                    <div class="price">€3,90</div>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-            <div class="ad-item">
-                <img src="../static/img/1_26.png" alt="Habesha_Gomen 16 €">
-                <div class="ad-content">
-                    <p>GRÜNER TEE </p>
-                       <p> SCHWARZER TEE </p>
-                       <p> KAMILLEN TEE</p>
-                    <div class="price">€2,50</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/1_25.png" alt="Salami und Käse Sandwich">
-                <div class="ad-content">
-                    <p>Salami und Käse Sandwich</p>
-                    <div class="price">€3,90</div>
-                    <p>Thunfisch Sandwich</p>
-                    <div class="price">€4,50</div>
-                    <p>Gemüse Sandwich</p>
-                    <div class="price">€4,50</div>
-                </div>
-            </div>
-
-            <div class="ad-item">
-                <img src="../static/img/Zucchini Bread_8_euro.png" alt="Zucchini Bread">
-                <div class="ad-content">
-                    <p>Zucchini Bread</p>
-                    <div class="price">€8,00</div>
-                </div>
-            </div>
-
-
-
-
+        <div class="ad-item">
+            <img src="../static/img/4_2.jpeg" alt="Gewürze - Minze - Limette">
         </div>
-    </section>
+
+        <div class="ad-item">
+            <img src="../static/img/4_4.jpeg" alt="Kakao mit Sahne">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_5.jpeg" alt="Salat mit Rindfleischstreifen">
+        </div>
+   <div class="ad-item">
+            <img src="../static/img/4_3.jpeg" alt="Himbeere - Limette - Minze">
+        </div>
+        <div class="ad-item">
+            <img src="../static/img/4_6.jpeg" alt="Gemischter Teller mit Fleisch und Reis">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_7.jpeg" alt="Pommes mit Rindfleischsauce">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_8.jpeg" alt="Sambussa Rinderhack">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_9.jpeg" alt="Burrito mit Rinderhack">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_10.jpeg" alt="Erdbeerkuchen">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_11.jpeg" alt="Bienenstich mit Pudding">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_12.jpeg" alt="Habesha Gomen 16€">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_13.jpeg" alt="Salami und Käse Sandwich">
+        </div>
+
+        <div class="ad-item">
+            <img src="../static/img/4_14.jpeg" alt="Zucchini Bread">
+        </div>
+
+    </div>
+</section>
 
 
     <!-- About Section -->
@@ -1267,7 +1179,7 @@ p {
                     <strong><p style="font-size: 1.5rem; color: #333; margin-bottom: 1.5rem;">
                         <strong style="color: #8B4513;">📞 Phone:</strong><br>
 
-                       +49 176 772 864  50
+                       +49 694 107 0915
 
                     </p>
                     </strong>
@@ -1521,13 +1433,6 @@ document.addEventListener('DOMContentLoaded', function () {
         <!-- WhatsApp Floating Button - Add this before closing </body> tag -->
 
 <!-- HTML -->
-<a href="https://wa.me/4917677286450?text=Hello%20Sina%20Cafe!%20I%20need%20to%20order%20food%20from%20your%20cafe%20and%20please%20contact%20me."
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Chat on WhatsApp">
-    <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-        <path d="M16 2C8.268 2 2 8.268 2 16C2 18.337 2.587 20.537 3.625 22.462L2 30L9.768 28.412C11.625 29.35 13.75 29.875 16 29.875C23.732 29.875 30 23.607 30 15.875C30 8.143 23.732 2 16 2ZM16 27.5C14.05 27.5 12.2 26.987 10.6 26.1L10.237 25.887L5.85 26.975L6.962 22.7L6.725 22.325C5.725 20.675 5.175 18.762 5.175 16.75C5.175 10.062 10.562 4.675 17.25 4.675C20.487 4.675 23.512 5.937 25.8 8.225C28.087 10.512 29.35 13.537 29.35 16.775C29.325 23.437 23.937 28.825 17.25 28.825ZM23.9 19.825C23.55 19.65 21.8 18.8 21.475 18.675C21.15 18.575 20.912 18.525 20.675 18.875C20.437 19.225 19.775 20.025 19.562 20.25C19.35 20.5 19.137 20.525 18.787 20.35C18.437 20.175 17.262 19.8 15.887 18.575C14.812 17.625 14.087 16.45 13.875 16.1C13.662 15.75 13.85 15.55 14.025 15.375C14.175 15.225 14.375 14.975 14.55 14.762C14.725 14.55 14.787 14.387 14.887 14.162C14.987 13.912 14.937 13.7 14.85 13.525C14.762 13.35 14.05 11.6 13.75 10.9C13.45 10.225 13.137 10.312 12.925 10.3H12.237C12 10.3 11.625 10.387 11.3 10.737C10.975 11.087 10.075 11.937 10.075 13.687C10.075 15.437 11.337 17.137 11.512 17.375C11.687 17.625 14.075 21.287 17.662 22.837C18.5 23.2 19.15 23.412 19.662 23.575C20.5 23.837 21.262 23.8 21.862 23.712C22.525 23.612 23.9 22.862 24.2 22.05C24.512 21.237 24.512 20.55 24.412 20.4C24.312 20.25 24.087 20.162 23.737 19.987Z" fill="white"/>
-    </svg>
-</a>
+
 </body>
 </html>
